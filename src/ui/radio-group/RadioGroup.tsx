@@ -12,19 +12,21 @@ type RadioGroupProps = {
 	title: string;
 };
 
-export const RadioGroup = (props: RadioGroupProps) => {
-	const { name, options, selected, onChange, title } = props;
-
+export const RadioGroup = ({
+	name,
+	options,
+	selected,
+	onChange,
+	title,
+}: RadioGroupProps) => {
 	const handleChange = (option: OptionType) => onChange?.(option);
 
 	return (
 		<div className={styles.container}>
 			{title && (
-				<>
-					<Text weight={800} size={12} uppercase>
-						{title}
-					</Text>
-				</>
+				<Text weight={800} size={12} uppercase>
+					{title}
+				</Text>
 			)}
 			<div className={styles.group}>
 				{options.map((option) => (

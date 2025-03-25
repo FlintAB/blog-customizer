@@ -1,20 +1,20 @@
-import { useState } from 'react';
 import { Select } from 'src/ui/select';
 import { OptionType, fontColors } from 'src/constants/articleProps';
 
-export const FontColorSelector = () => {
-	const [selectedFontColor, setSelectedFontColor] = useState<OptionType>(
-		fontColors[0]
-	);
-	const handleFontColorChange = (option: OptionType) => {
-		setSelectedFontColor(option);
-	};
+type TFontColorProps = {
+	selectedColor: OptionType;
+	onColorChange: (option: OptionType) => void;
+};
 
+export const FontColorSelector = ({
+	selectedColor,
+	onColorChange,
+}: TFontColorProps) => {
 	return (
 		<Select
-			selected={selectedFontColor}
+			selected={selectedColor}
 			options={fontColors}
-			onChange={handleFontColorChange}
+			onChange={onColorChange}
 			title='Цвет шрифта'
 		/>
 	);

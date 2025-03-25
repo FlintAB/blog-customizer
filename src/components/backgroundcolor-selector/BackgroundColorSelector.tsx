@@ -1,19 +1,20 @@
-import { useState } from 'react';
 import { Select } from 'src/ui/select';
 import { OptionType, backgroundColors } from 'src/constants/articleProps';
 
-export const BackgroundColorSelector = () => {
-	const [selectedBackgroundColor, setSelectedBackgroundColor] =
-		useState<OptionType>(backgroundColors[0]);
-	const handleBackgroundColorChange = (option: OptionType) => {
-		setSelectedBackgroundColor(option);
-	};
+type TFontBackgroundColorProps = {
+	selectedBackgroundColor: OptionType;
+	onBackgroundColorChange: (option: OptionType) => void;
+};
 
+export const BackgroundColorSelector = ({
+	selectedBackgroundColor,
+	onBackgroundColorChange,
+}: TFontBackgroundColorProps) => {
 	return (
 		<Select
 			selected={selectedBackgroundColor}
 			options={backgroundColors}
-			onChange={handleBackgroundColorChange}
+			onChange={onBackgroundColorChange}
 			title='Цвет фона'
 		/>
 	);

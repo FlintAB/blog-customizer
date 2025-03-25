@@ -1,20 +1,21 @@
-import { useState } from 'react';
 import { RadioGroup } from 'src/ui/radio-group';
 import { OptionType, fontSizeOptions } from 'src/constants/articleProps';
 
-export const FontSizeRadioButton = () => {
-	const [selectedSize, setSelectedSize] = useState<OptionType>(
-		fontSizeOptions[0]
-	);
-	const handleSizeChange = (option: OptionType) => {
-		setSelectedSize(option);
-	};
+type TFontSizeRadioProps = {
+	selectedSize: OptionType;
+	onSizeChange: (option: OptionType) => void;
+};
+
+export const FontSizeRadioButton = ({
+	selectedSize,
+	onSizeChange,
+}: TFontSizeRadioProps) => {
 	return (
 		<RadioGroup
 			options={fontSizeOptions}
 			selected={selectedSize}
-			onChange={handleSizeChange}
-			name=''
+			onChange={onSizeChange}
+			name='fontSize'
 			title='Размер шрифта'
 		/>
 	);
