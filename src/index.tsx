@@ -18,45 +18,14 @@ const App = () => {
 	const [currentState, setCurrentState] =
 		useState<ArticleStateType>(defaultArticleState);
 
-	const [pendingState, setPendingState] =
-		useState<ArticleStateType>(defaultArticleState);
-
-	const handleChangeApply = () => {
-		setCurrentState(pendingState);
+	const handleChangeApply = (newState: ArticleStateType) => {
+		setCurrentState(newState);
 	};
 
 	const handleChangeReset = () => {
-		setPendingState(defaultArticleState);
 		setCurrentState(defaultArticleState);
 	};
 
-	const handleFontChange = (
-		fontFamilyOption: ArticleStateType['fontFamilyOption']
-	) => {
-		setPendingState((prev) => ({ ...prev, fontFamilyOption }));
-	};
-
-	const handleSizeChange = (
-		fontSizeOption: ArticleStateType['fontSizeOption']
-	) => {
-		setPendingState((prev) => ({ ...prev, fontSizeOption }));
-	};
-
-	const handleColorChange = (fontColor: ArticleStateType['fontColor']) => {
-		setPendingState((prev) => ({ ...prev, fontColor }));
-	};
-
-	const handleBackgroundColorChange = (
-		backgroundColor: ArticleStateType['backgroundColor']
-	) => {
-		setPendingState((prev) => ({ ...prev, backgroundColor }));
-	};
-
-	const handleWidthChange = (
-		contentWidth: ArticleStateType['contentWidth']
-	) => {
-		setPendingState((prev) => ({ ...prev, contentWidth }));
-	};
 	return (
 		<main
 			className={clsx(styles.main)}
@@ -71,12 +40,6 @@ const App = () => {
 			}>
 			<Article
 				currentState={currentState}
-				pendingState={pendingState}
-				onFontChange={handleFontChange}
-				onSizeChange={handleSizeChange}
-				onColorChange={handleColorChange}
-				onBackgroundColorChange={handleBackgroundColorChange}
-				onWidthChange={handleWidthChange}
 				onApply={handleChangeApply}
 				onReset={handleChangeReset}
 			/>

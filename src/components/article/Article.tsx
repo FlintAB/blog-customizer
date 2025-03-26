@@ -10,30 +10,11 @@ import { useState } from 'react';
 
 type TArticleProps = {
 	currentState: ArticleStateType;
-	pendingState: ArticleStateType;
-	onApply: () => void;
+	onApply: (newState: ArticleStateType) => void;
 	onReset: () => void;
-	onFontChange: (
-		fontFamilyOption: ArticleStateType['fontFamilyOption']
-	) => void;
-	onSizeChange: (fontSizeOption: ArticleStateType['fontSizeOption']) => void;
-	onColorChange: (fontColor: ArticleStateType['fontColor']) => void;
-	onBackgroundColorChange: (
-		backgroundColor: ArticleStateType['backgroundColor']
-	) => void;
-	onWidthChange: (contentWidth: ArticleStateType['contentWidth']) => void;
 };
 
-export const Article = ({
-	pendingState,
-	onApply,
-	onReset,
-	onFontChange,
-	onSizeChange,
-	onColorChange,
-	onBackgroundColorChange,
-	onWidthChange,
-}: TArticleProps) => {
+export const Article = ({ currentState, onApply, onReset }: TArticleProps) => {
 	const [isOpen, setOpen] = useState(false);
 
 	const handleOpenChange = () => {
@@ -44,19 +25,10 @@ export const Article = ({
 		<>
 			<ArticleParamsForm
 				isOpen={isOpen as boolean}
-				onOpenChange={handleOpenChange as () => void}
-				selectedFont={pendingState.fontFamilyOption}
-				selectedSize={pendingState.fontSizeOption}
-				selectedColor={pendingState.fontColor}
-				selectedBackgroundColor={pendingState.backgroundColor}
-				selectedWidth={pendingState.contentWidth}
-				onFontChange={onFontChange}
-				onSizeChange={onSizeChange}
-				onColorChange={onColorChange}
-				onBackgroundColorChange={onBackgroundColorChange}
-				onWidthChange={onWidthChange}
+				onOpenChange={handleOpenChange}
 				onApply={onApply}
 				onReset={onReset}
+				currentState={currentState}
 			/>
 			<div>
 				<article className={clsx(styles.article)}>
