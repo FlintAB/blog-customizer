@@ -4,7 +4,6 @@
 	width: 616px;
 	height: 100%;
 	overflow: scroll;
-	overflow: auto auto;
 	transform: translate(-616px);
 	transition: transform 0.5s ease;
 }
@@ -13,8 +12,12 @@
 	transform: translate(0);
 }
 
-.spacing_50 {
-	margin-bottom: 50px;
+.form_label {
+	font-weight: 800;
+	font-size: 31px;
+	letter-spacing: 0%;
+	text-align: center;
+	text-transform: uppercase;
 }
 
 .form {
